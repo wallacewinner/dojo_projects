@@ -14,7 +14,7 @@ try {
     const jsonInput = fs.readFileSync(inputFile, 'utf-8');
     const parsed = JSON.parse(jsonInput);
     const beautified = JSON.stringify(parsed, null, 2);
-    console.log("\n=== Pré-visualização do JSON Formatado ===\n");
+    console.log("\n=== JSON Formatado ===\n");
     console.log(beautified);
     console.log("\n==========================================\n");
 } catch (error) {
