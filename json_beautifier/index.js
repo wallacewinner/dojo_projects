@@ -1,9 +1,11 @@
 const fs = require('node:fs');
+const readLine = require('node:readline');
+
 
 console.log ("Bem vindo ao JSON Beautifier!");
-const [, , inputFile, outputFile] = process.argv;
+const [, , inputFile] = process.argv;
 
-if (!inputFile || !outputFile) {
+if (!inputFile) {
     console.error("Os arquivos necessários não foram fornecidos.");
     process.exit(1);
 }
@@ -12,8 +14,9 @@ try {
     const jsonInput = fs.readFileSync(inputFile, 'utf-8');
     const parsed = JSON.parse(jsonInput);
     const beautified = JSON.stringify(parsed, null, 2);
-    fs.writeFileSync(outputFile, beautified, 'utf-8');
-    console.log(`Arquivo JSON formatado e salvo em: ${outputFile}`);
+    console.log("\n=== Pré-visualização do JSON Formatado ===\n");
+    console.log(beautified);
+    console.log("\n==========================================\n");
 } catch (error) {
     if (error instanceof SyntaxError) {
         console.error("Erro de sintaxe no JSON:", error.message);
