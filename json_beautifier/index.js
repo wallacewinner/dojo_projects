@@ -10,8 +10,19 @@ if (!inputFile || !outputFile) {
 
 try {
     const jsonInput = fs.readFileSync(inputFile, 'utf-8');
-    console.log (jsonInput);
+    const parsed = JSON.parse(jsonInput);
+    const beautified = JSON.stringify(parsed, null, 2);
+    fs.writeFileSync(outputFile, beautified, 'utf-8');
+    console.log(`Arquivo JSON formatado e salvo em: ${outputFile}`);
 } catch (error) {
-    console.error("Erro ao ler o arquivo de entrada:", error.message);
+    if (error instanceof SyntaxError) {
+        console.error("Erro de sintaxe no JSON:", error.message);
+    } else if (error.code === 'ENOENT') {
+        console.error("Erro ao ler o arquivo de entrada:", error.message);
+        process.exit(1);
+    } else {
+        console.error("Erro desconhecido:", error.message);
+        process.exit(1);
+    }
     process.exit(1);
 }
