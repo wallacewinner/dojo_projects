@@ -1,0 +1,13 @@
+{
+  "name": "json_beautifier",
+  "version": "1.0.0",
+  "description": "Desenvolver uma ferramenta de linha de comando (CLI) em Node.js que receba um arquivo de texto contendo um JSON bruto (minificado ou bagunçado) e exporte um novo arquivo com o JSON formatado e indentado corretamente (*pretty-print*).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
