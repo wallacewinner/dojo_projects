@@ -1,5 +1,7 @@
 const fs = require('node:fs');
+const { type } = require('node:os');
 const readLine = require('node:readline');
+const MAX_STRING_LENGTH = 100;
 
 
 console.log ("Bem vindo ao JSON Beautifier!");
@@ -13,7 +15,12 @@ if (!inputFile) {
 try {
     const jsonInput = fs.readFileSync(inputFile, 'utf-8');
     const parsed = JSON.parse(jsonInput);
-    const beautified = JSON.stringify(parsed, null, 2);
+    const beautified = JSON.stringify(parsed, (key, value) => {
+        if (typeof value === 'string' && value.length > MAX_STRING_LENGTH) {
+            return value.substring(0, MAX_STRING_LENGTH) + '...';
+        }
+        return value;
+    }, 2);
     console.log("\n=== JSON Formatado ===\n");
     console.log(beautified);
     console.log("\n==========================================\n");
