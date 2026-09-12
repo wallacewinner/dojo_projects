@@ -14,7 +14,6 @@ public class StockService {
 
    public BrapiResponseDto getStockQuote(String symbol) {
       BrapiResponseDto response = apiClient.getStockQuote(symbol);
-      System.out.println(response.toString());
       return response;
    }
 }
