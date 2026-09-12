@@ -1,6 +1,6 @@
 package com.winner.stock.controller;
 
-import com.winner.stock.dto.BrapiResponseDto;
+import com.winner.stock.dto.StockResponseDto;
 import com.winner.stock.service.StockService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +19,8 @@ public class StockController {
     }
 
     @GetMapping("/{symbol}")
-    public ResponseEntity<BrapiResponseDto> getStockQuote(@PathVariable String symbol) {
-        BrapiResponseDto response = stockService.getStockQuote(symbol);
+    public ResponseEntity<StockResponseDto> getStockQuote(@PathVariable String symbol) {
+        StockResponseDto response = stockService.getStockQuote(symbol);
         return ResponseEntity.ok(response);
     }
 }
