@@ -7,6 +7,6 @@ import com.winner.stock.dto.BrapiResponseDto;
 
 @FeignClient(url = "https://brapi.dev", name = "brapi")
 public interface BrapiClient {
-    @GetMapping("/api/v2/stocks/{symbol}")
+    @GetMapping("/api/v2/stocks/quote?symbols={symbol}")
         BrapiResponseDto getStockQuote(@PathVariable("symbol") String symbol);
 }
